@@ -1,0 +1,25 @@
+{
+  "name": "react-swipeable-tab-views",
+  "version": "1.0.0",
+  "description": "A react component that helps to implement swipeable tab views like native apps",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eunvanz/react-swipeable-tab-views.git"
+  },
+  "keywords": [
+    "react",
+    "swiper",
+    "swipeable-tab",
+    "tab"
+  ],
+  "author": "eunvanz@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eunvanz/react-swipeable-tab-views/issues"
+  },
+  "homepage": "https://github.com/eunvanz/react-swipeable-tab-views#readme"
+}
