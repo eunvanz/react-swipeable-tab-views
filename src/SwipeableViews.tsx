@@ -19,8 +19,8 @@ const SwipeableViews = ({
   const lazySwiperChildren = useMemo(() => {
     return Children.map(children, (child, index) => {
       if (child) {
-        const { children: tabContent, fallback } = child.props;
-        if (fallback) {
+        const { children: tabContent, fallback, isLazy } = child.props;
+        if (isLazy) {
           return (
             <SwiperSlide>
               <LazySlideComponent isActive={index === activeIndex} fallback={fallback}>
@@ -58,7 +58,7 @@ const SwipeableViews = ({
 
 interface LazySlideComponentProps {
   isActive: boolean;
-  fallback: React.ReactNode;
+  fallback?: React.ReactNode;
   children: React.ReactNode;
 }
 
@@ -75,16 +75,22 @@ const LazySlideComponent: React.FC<LazySlideComponentProps> = ({
     }
   }, [isActive, isLoaded]);
 
-  return <>{isLoaded ? children : fallback}</>;
+  return <>{isLoaded ? children : fallback || null}</>;
 };
 
 export interface SwipeableViewProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   children: React.ReactNode;
-  fallback: React.ReactNode;
+  fallback?: React.ReactNode;
+  isLazy?: boolean;
 }
 
-export const SwipeableView = ({ children, ...restProps }: SwipeableViewProps) => {
+export const SwipeableView = ({
+  fallback,
+  isLazy,
+  children,
+  ...restProps
+}: SwipeableViewProps) => {
   return <div {...restProps}>{children}</div>;
 };
 
